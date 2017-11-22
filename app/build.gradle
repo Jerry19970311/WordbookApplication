@@ -1,0 +1,40 @@
+apply plugin: 'com.android.application'
+
+//sourceSets.main.jniLibs.srcDirs = ['libs']
+
+android {
+    compileSdkVersion 26
+    defaultConfig {
+        applicationId "cn.edu.bistu.cs.se.wordbookapplication"
+        minSdkVersion 26
+        targetSdkVersion 26
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation 'com.android.support:appcompat-v7:26.1.0'
+    implementation 'com.android.support.constraint:constraint-layout:1.0.2'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.1'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
+    implementation files('mysql-connector-java-5.1.44/mysql-connector-java-5.1.44/mysql-connector-java-5.1.44-bin.jar')
+    implementation files('mysql-connector-java-5.1.44/mysql-connector-java-5.1.44/src/lib/c3p0-0.9.1-pre6.src.zip')
+    implementation files('mysql-connector-java-5.1.44/mysql-connector-java-5.1.44/src/lib/jboss-common-jdbc-wrapper-src.jar')
+    implementation files('mysql-connector-java-5.1.44/mysql-connector-java-5.1.44/src/lib/jboss-common-jdbc-wrapper.jar')
+    implementation files('mysql-connector-java-5.1.44/mysql-connector-java-5.1.44/src/lib/slf4j-api-1.6.1.jar')
+    implementation files('libs/ai-translate-android-sdk-v1.5.0/YoudaoBase.jar')
+    implementation files('libs/ai-translate-android-sdk-v1.5.0/YoudaoCnDictOffline.jar')
+    implementation files('libs/ai-translate-android-sdk-v1.5.0/YoudaoTranslateOffline.jar')
+    implementation files('libs/ai-translate-android-sdk-v1.5.0/YoudaoTranslateOnline.jar')
+    implementation files('libs/gson-2.3.jar')
+}

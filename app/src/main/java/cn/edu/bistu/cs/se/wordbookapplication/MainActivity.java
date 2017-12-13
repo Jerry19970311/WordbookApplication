@@ -3,12 +3,16 @@ package cn.edu.bistu.cs.se.wordbookapplication;
 import android.annotation.SuppressLint;
 import android.app.*;
 import android.app.ListFragment;
+import android.content.Context;
+import android.content.Intent;
 import android.content.res.Configuration;
+import android.database.sqlite.SQLiteDatabase;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
@@ -38,21 +42,31 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Configuration configuration=getResources().getConfiguration();
-        if(configuration.orientation==Configuration.ORIENTATION_PORTRAIT) {
-            android.support.v4.app.FragmentManager fragmentManager = getSupportFragmentManager();
-            FragmentTransaction transaction = fragmentManager.beginTransaction();
-            transaction.replace(R.id.main_layout, new ListsFragment());
-            transaction.commit();
-        }
+        android.support.v4.app.FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction transaction = fragmentManager.beginTransaction();
+        transaction.add(R.id.main_layout, new ListsFragment(),"lists");
         if(configuration.orientation==Configuration.ORIENTATION_LANDSCAPE){
-            ListsFragment listsFragment=new ListsFragment();
-            TextFragment textFragment=new TextFragment();
+            transaction.add(R.id.right_layout,new TextFragment(),"text");
+            //transaction.commit();
         }
+        transaction.commit();
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.main,menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.lineTranslate:
+                Intent intent1=new Intent(MainActivity.this,WordActivity.class);
+                startActivity(intent1);
+                break;
+            default:
+        }
         return true;
     }
 }

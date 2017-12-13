@@ -30,12 +30,16 @@ public class JSONanalyse implements Serializable {
 
     @Override
     public String toString() {
-        String tran="";
-        int index=translation.size();
-        for(int i=0;i<index;i++){
-            tran=tran+translation.get(i)+"\t";
+        if(basic!=null) {
+            String tran = "";
+            int index = translation.size();
+            for (int i = 0; i < index; i++) {
+                tran = tran + translation.get(i) + "\t";
+            }
+            return query + "\n" + tran + "\n" + basic.toString() + "\n" + web.toString();
+        }else{
+            return "找不到该单词！";
         }
-        return query+"\n"+tran+"\n"+basic.toString()+"\n"+web.toString();
     }
 
     public List<WebEntity> getWeb() {
@@ -176,10 +180,10 @@ public class JSONanalyse implements Serializable {
 
         @Override
         public String toString() {
-            String s="\n英式英标:/"+uk_phonetic+"/\n美式音标:/"+us_phonetic+"/\n";
-            int index=explains.size();
-            for(int i=0;i<index;i++){
-                s=s+explains.get(i)+"\n";
+            String s = "\n英式英标:/" + uk_phonetic + "/\n美式音标:/" + us_phonetic + "/\n";
+            int index = explains.size();
+            for (int i = 0; i < index; i++) {
+                s = s + explains.get(i) + "\n";
             }
             return s;
         }

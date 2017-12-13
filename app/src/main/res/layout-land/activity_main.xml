@@ -4,19 +4,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/main_layout"
     tools:context="cn.edu.bistu.cs.se.wordbookapplication.MainActivity"
     android:orientation="horizontal">
-    <fragment
+    <FrameLayout
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="1"
-        android:id="@+id/fragment_list2"
-        android:name="cn.edu.bistu.cs.se.wordbookapplication.ListsFragment"/>
-    <fragment
+        android:id="@+id/main_layout"></FrameLayout>
+    <FrameLayout
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="1"
-        android:id="@+id/fragment_text2"
-        android:name="cn.edu.bistu.cs.se.wordbookapplication.TextFragment"/>
+        android:id="@+id/right_layout"></FrameLayout>
 </LinearLayout>
